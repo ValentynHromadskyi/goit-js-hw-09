@@ -13,6 +13,7 @@ const refs = {
 refs.start.addEventListener('click', onStart);
 refs.stop.addEventListener('click', onStop);
 
+let timerId ;
 function onStart() {
   refs.start.disabled = true;
   timerId = setInterval(() => {
