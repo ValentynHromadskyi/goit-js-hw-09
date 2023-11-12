@@ -17,6 +17,7 @@ const refs = {
 refs.start.disabled = true;
 let selectedDate;
 let valueTimer;
+let dateNow;
 let timerId;
 const options = {
   enableTime: true,
