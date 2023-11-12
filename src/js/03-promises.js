@@ -7,20 +7,22 @@ const refs = {
   step: document.querySelector('input[name="step"]'),
   amount: document.querySelector('input[name="amount"]'),
   body: document.querySelector('body'),
-  input: document.querySelector('label'),
+  input: document.querySelector('label')
 };
 
 let position = 0;
-
+let i=0;
+let amount=0;
+let step=0;
 refs.form.addEventListener('submit', onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
-  let amount = refs.amount.value;
-  const step = Number(refs.step.value);
+  amount = refs.amount.value;
+  step = Number(refs.step.value);
   let delay = Number(refs.delay.value);
 
-  for (let i = 0; i < amount; i += 1) {
+  for (i ; i < amount; i += 1) {
     position += 1;
 
     createPromise(position, delay)
@@ -36,7 +38,9 @@ function onSubmit(event) {
       });
     delay += step;
   }
-}
+  position=0;
+  i=0
+};
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -49,7 +53,7 @@ function createPromise(position, delay) {
       }
     }, delay);
   });
-}
+};
 
 function style() {
   refs.body.style.backgroundColor = 'MediumSeaGreen';
