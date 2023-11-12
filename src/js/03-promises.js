@@ -10,18 +10,19 @@ const refs = {
   input: document.querySelector('label')
 };
 
-let position = 0;
+
 let i=0;
 let amount=0;
 let step=0;
 refs.form.addEventListener('submit', onSubmit);
-
+refs.button.disabled = false;
+    
 function onSubmit(event) {
   event.preventDefault();
   amount = refs.amount.value;
   step = Number(refs.step.value);
   let delay = Number(refs.delay.value);
-
+  let position = 0;
   for (i ; i < amount; i += 1) {
     position += 1;
 
@@ -38,8 +39,13 @@ function onSubmit(event) {
       });
     delay += step;
   }
+  a = setTimeout(() => {
+    refs.button.disabled = false;
+  }, delay);
   position=0;
-  i=0
+  i=0;
+  refs.button.disabled = true;
+  refs.form.reset();
 };
 
 function createPromise(position, delay) {
