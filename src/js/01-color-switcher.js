@@ -13,9 +13,11 @@ const refs = {
 refs.start.addEventListener('click', onStart);
 refs.stop.addEventListener('click', onStop);
 
-let timerId ;
+let timerId = 0;
+
 function onStart() {
   refs.start.disabled = true;
+  refs.stop.disabled = false;
   timerId = setInterval(() => {
     const randomColor = getRandomHexColor();
     refs.body.setAttribute('style', `background: ${randomColor};`);
@@ -24,5 +26,7 @@ function onStart() {
 
 function onStop() {
   refs.start.disabled = false;
+  refs.stop.disabled = true;
   clearInterval(timerId);
 }
+
